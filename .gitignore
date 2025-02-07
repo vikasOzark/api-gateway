@@ -1,0 +1,6 @@
+.air.toml
+.env
+go.sum
+test.go
+.vscode
+tmp/*
