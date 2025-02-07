@@ -4,6 +4,7 @@ import (
 	"gateway/helpers"
 	"gateway/internal/middleware"
 	"log"
+	"net/http"
 	"os"
 	"strconv"
 	"strings"
@@ -49,7 +50,7 @@ func main() {
 	middleware.HandlerMiddleware(router)
 
 	router.GET("/", func(c echo.Context) error {
-		return c.HTML(200, `
+		return c.HTML(http.StatusOK, `
 		<body style="background-color:black; height:100vh;">
 	<h1 style="color:#AEEA94;">Welcome to the API gateway service.</h1></body>`)
 	})
