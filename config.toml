@@ -1,0 +1,10 @@
+[endpoints]
+auth = "http://127.0.0.1:3000"
+user = "http://127.0.0.1"
+
+[exclude]
+login = "http://1270.0.1/auth/login"
+register = "http://1270.0.1/auth/register"
+
+[config]
+include_service_prefix = "true"

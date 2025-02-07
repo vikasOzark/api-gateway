@@ -4,3 +4,4 @@ go.sum
 test.go
 .vscode
 tmp/*
+go.mod
