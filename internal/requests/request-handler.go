@@ -46,7 +46,6 @@ func RequestHandler(url helpers.UrlExtractor) (*http.Response, error) {
 
     req.Header.Set(CONTENT_TYPE, contentType)
     response, err := client.Do(req)
-    fmt.Println("Called api == >> ")
     
     if err != nil {
         return nil, err

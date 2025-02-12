@@ -1,7 +1,6 @@
 package helpers
 
 import (
-	"fmt"
 	"gateway/isdelve"
 	"log"
 	"os"
@@ -30,8 +29,6 @@ func RequiredChecks() {
 	if isdelve.Enabled {
 		config_path = filepath.Join("..", "..", "config.toml")
 	}
-
-	fmt.Println(config_path)
 
 	isExists := FileExists(config_path)
 	if !isExists {

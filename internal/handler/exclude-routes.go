@@ -35,7 +35,7 @@ func ExcludeRouteHandler(next echo.HandlerFunc) echo.HandlerFunc {
 		isThere := slices.Contains(urls, url.URL)
 
 		if !isThere {
-			next(c)
+			return next(c)
 		}
 		return requests.RequestManager(url)
 	}

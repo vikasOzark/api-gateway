@@ -1,7 +1,6 @@
 package requests
 
 import (
-	"fmt"
 	"gateway/helpers"
 	"io"
 	"net/http"
@@ -59,6 +58,5 @@ func RequestManager(url helpers.UrlExtractor) error {
 	}
 
 	// Return the response body to the client
-	fmt.Println("===================> ")
 	return helpers.ContentTypeResponse(url.Context, responseContentType, body, response)
 }
