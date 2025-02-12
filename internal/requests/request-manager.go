@@ -1,6 +1,7 @@
 package requests
 
 import (
+	"fmt"
 	"gateway/helpers"
 	"io"
 	"net/http"
@@ -35,13 +36,13 @@ func RequestManager(url helpers.UrlExtractor) error {
 	targetLocation := cl.GetTarget(url.Service)
 
 	if targetLocation == "" {
-		return url.Context.JSON(http.StatusNotFound, map[string]string{"error": "Service not found"})
+		return url.Context.JSON(http.StatusNotFound, map[string]string{"ok": "false", "error 3": "Service not found"})
 	}
 
 	// Send POST request to the target location
 	response, err := RequestHandler(url)
 	if err != nil {
-		return url.Context.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
+		return url.Context.JSON(http.StatusInternalServerError, map[string]string{"ok": "false", "error 1": err.Error()})
 	}
 	defer response.Body.Close()
 
@@ -54,9 +55,10 @@ func RequestManager(url helpers.UrlExtractor) error {
 	// Read the response body
 	body, err := io.ReadAll(response.Body)
 	if err != nil {
-		return url.Context.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
+		return url.Context.JSON(response.StatusCode, map[string]string{"ok": "false", "error 2": err.Error()})
 	}
 
 	// Return the response body to the client
-	return helpers.ContentTypeResponse(url.Context, responseContentType, body)
+	fmt.Println("===================> ")
+	return helpers.ContentTypeResponse(url.Context, responseContentType, body, response)
 }

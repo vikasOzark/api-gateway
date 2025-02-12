@@ -26,7 +26,6 @@ func RouteHandler(next echo.HandlerFunc) echo.HandlerFunc {
 		url := helpers.UrlExtractor{
 			Context: c,
 		}
-
 		// Process the URL to determine the HTTP method other useful information
 		url.Process()
 		return requests.RequestManager(url)

@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-// RequestHandler sends a PUT request to the target location based on the provided URL and returns the response.
+// HandlerRequest sends a PUT request to the target location based on the provided URL and returns the response.
 //
 // Parameters:
 //   - url: An instance of helpers.UrlExtractor that contains the context and service information.
@@ -22,7 +22,7 @@ import (
 //   4. Creates a new HTTP client and a PUT request with the extracted payload and content type.
 //   5. Sends the PUT request to the target location.
 //   6. Returns the response from the target location or an error if the request fails.
-func RequestHandler(url helpers.UrlExtractor) (*http.Response, error) {
+func HandlerRequest(url helpers.UrlExtractor) (*http.Response, error) {
     config := &helpers.Config{}
 
     err := config.LoadConfig()
@@ -46,8 +46,7 @@ func RequestHandler(url helpers.UrlExtractor) (*http.Response, error) {
 
     req.Header.Set(CONTENT_TYPE, contentType)
     response, err := client.Do(req)
-    fmt.Println("Called api == >> ")
-    
+
     if err != nil {
         return nil, err
     }

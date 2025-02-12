@@ -7,35 +7,17 @@ import (
 	"net/http"
 	"os"
 	"strconv"
-	"strings"
 
-	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 )
 
 func init() {
-	error_ := godotenv.Load()
-	if error_ != nil {
-		log.Fatal("Unable to load .env file : ", error_)
-	}
-
-	config_path := os.Getenv("CONFIG_PATH")
-	isExists := helpers.FileExists(config_path)
-
-	if !isExists {
-		panic("Config file not found")
-	}
-
-	isToml := strings.HasSuffix(config_path, ".toml")
-	if !isToml {
-		panic("Config file must be in TOML format")
-	}
-
+	helpers.RequiredChecks()
 }
 
 func main() {
 	helpers.Logger().Info("Starting the API gateway service")
-	
+
 	debugEnv := os.Getenv("DEBUG")
 	debug, err := strconv.ParseBool(debugEnv)
 	if err != nil {
