@@ -1,10 +1,10 @@
 package helpers
 
 import (
-	"gateway/isdelve"
 	"log"
 	"os"
 	"path/filepath"
+	"strconv"
 
 	"github.com/BurntSushi/toml"
 )
@@ -19,8 +19,11 @@ type Config struct {
 }
 
 func (cl *Config) LoadConfig() error {
+	envValue := os.Getenv("ISDELVE_Enabled")
+	isEnabled, _ := strconv.ParseBool(envValue)
+
 	config_path := os.Getenv("CONFIG_PATH")
-	if isdelve.Enabled {
+	if isEnabled {
 		config_path = filepath.Join("..", "..", "config.toml")
 	}
 

@@ -5,3 +5,5 @@ test.go
 .vscode
 tmp/*
 go.mod
+config.toml
+vendor/*

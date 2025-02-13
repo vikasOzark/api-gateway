@@ -1,10 +1,10 @@
 package helpers
 
 import (
-	"gateway/isdelve"
 	"log"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"github.com/joho/godotenv"
@@ -16,8 +16,11 @@ import (
 // environment variable, and ensures that the configuration file is in TOML format.
 // If any of these checks fail, the function will log an error or panic accordingly.
 func RequiredChecks() {
+	envValue := os.Getenv("ISDELVE_Enabled")
+	isEnabled, _ := strconv.ParseBool(envValue)
+	
 	projectRoot := ".env"
-	if isdelve.Enabled {
+	if isEnabled {
 		projectRoot = filepath.Join("..", "..", ".env")
 	}
 
@@ -26,7 +29,7 @@ func RequiredChecks() {
 	}
 
 	config_path := os.Getenv("CONFIG_PATH")
-	if isdelve.Enabled {
+	if isEnabled {
 		config_path = filepath.Join("..", "..", "config.toml")
 	}
 
