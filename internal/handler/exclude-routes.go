@@ -40,5 +40,3 @@ func ExcludeRouteHandler(next echo.HandlerFunc) echo.HandlerFunc {
 		return requests.RequestManager(url)
 	}
 }
-
-// 110035
