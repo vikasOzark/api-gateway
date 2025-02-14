@@ -1,14 +1,21 @@
 package test
 
 import (
+	"gateway/helpers"
 	"testing"
 
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 )
 
+func TestLoader() {
+	helpers.RequiredChecks()
+	config := &helpers.Config{}
+	config.LoadConfig()
+}
+
 func EnvSetter(t *testing.T) {
-	t.Setenv("GOCACHE", "off")
+	TestLoader()
 }
 
 func EchoRouterProvider(t *testing.T) (*echo.Echo, *assert.Assertions) {

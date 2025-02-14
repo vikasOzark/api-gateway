@@ -17,8 +17,8 @@ type Config struct {
 }
 
 func (cl *Config) LoadConfig() error {
+	
 	config_path := os.Getenv("CONFIG_PATH")
-
 	if _, err := toml.DecodeFile(config_path, cl); err != nil {
 		log.Fatal(err)
 		return err
