@@ -18,6 +18,36 @@ This project is an API Gateway service built using the Echo framework in Go. The
 - Git
 - Make sure to set up the required environment variables as described below.
 
+### Rsys Logging setup
+Setting up the rsys logging.
+
+#### Step #1
+Create api-gateway rsys conf file. 
+```bash
+sudo /etc/rsyslog.d/api-gateway.conf
+```
+
+#### Step #2
+Add Below content to the `api-gateway.conf`.
+```bash
+if $programname == 'api-gateway' then /var/log/api-gateway.log
+& stop
+```
+
+#### Step3 
+Restart rsys service.
+```bash
+sudo service rsyslog restart
+```
+
+#### Step4 
+Run the following command to create log file and give required permissions.
+```bash
+sudo touch /var/log/api-gateway.log
+sudo chown syslog:adm /var/log/api-gateway.log
+sudo chmod 664 /var/log/api-gateway.log
+```
+
 ### Installation
 
 1. Clone the repository:
