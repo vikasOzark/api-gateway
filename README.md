@@ -93,20 +93,21 @@ The application relies on the following environment variables:
 ├── cmd
 │   └── main
 │       └── main.go
-├── config.toml
-├── go.mod
-├── go.sum
 ├── helpers
 │   ├── config-loader.go
 │   ├── file-checker.go
 │   ├── logger.go
 │   ├── required-checks.go
 │   ├── response-provider.go
+│   ├── test
+│   │   └── configuration_loader_test.go
 │   └── url-extractor.go
 ├── internal
 │   ├── handler
 │   │   ├── exclude-routes.go
-│   │   └── route-handler.go
+│   │   ├── route-handler.go
+│   │   └── test
+│   │       └── exclud_routes_test.go
 │   ├── middleware
 │   │   ├── middleware-auth.go
 │   │   └── middleware-handler.go
@@ -115,11 +116,13 @@ The application relies on the following environment variables:
 │       ├── request-handler.go
 │       └── request-manager.go
 ├── isdelve
-│   └── nodelve.go                  # This file contains the [Enable] variable to work with IDE debuggers. 
+│   └── nodelve.go
 ├── README.md
+├── test
+│   └── test_env_setter.go
 ├── third_party
 │   ├── goclockauth.go
 │   └── utils.go
-└── tmp
-    └── main
+├── tmp
+└── vendor
 ```
