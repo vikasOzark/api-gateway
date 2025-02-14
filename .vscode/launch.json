@@ -1,0 +1,16 @@
+// Author : Vikas
+// This configuration is ment to be used in vs code debugger only.
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Package",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/cmd/main/main.go",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

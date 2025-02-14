@@ -3,8 +3,6 @@ package helpers
 import (
 	"log"
 	"os"
-	"path/filepath"
-	"strconv"
 
 	"github.com/BurntSushi/toml"
 )
@@ -19,13 +17,7 @@ type Config struct {
 }
 
 func (cl *Config) LoadConfig() error {
-	envValue := os.Getenv("ISDELVE_Enabled")
-	isEnabled, _ := strconv.ParseBool(envValue)
-
 	config_path := os.Getenv("CONFIG_PATH")
-	if isEnabled {
-		config_path = filepath.Join("..", "..", "config.toml")
-	}
 
 	if _, err := toml.DecodeFile(config_path, cl); err != nil {
 		log.Fatal(err)

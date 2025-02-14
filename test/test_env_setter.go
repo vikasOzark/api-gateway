@@ -8,7 +8,7 @@ import (
 )
 
 func EnvSetter(t *testing.T) {
-	t.Setenv("ISDELVE_Enabled", "true")
+	t.Setenv("GOCACHE", "off")
 }
 
 func EchoRouterProvider(t *testing.T) (*echo.Echo, *assert.Assertions) {
