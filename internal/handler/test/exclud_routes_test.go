@@ -1,7 +1,6 @@
 package test
 
 import (
-	"fmt"
 	"gateway/internal/middleware"
 	"gateway/test"
 	"io"
@@ -32,8 +31,6 @@ func TestExcludedRoutes(t *testing.T) {
 	body := new(strings.Builder)
 	_, err = io.Copy(body, resp.Body)
 	assert.NoError(err)
-
-	fmt.Printf("Response Body: %s", body.String())
 }
 
 func TestUnRegisteredRoutes(t *testing.T) {

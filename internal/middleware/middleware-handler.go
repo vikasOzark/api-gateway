@@ -20,13 +20,13 @@ func HandlerMiddleware(router *echo.Echo) {
 	router.Use(middleware.RemoveTrailingSlash())
 	router.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
 		Format: "${time_rfc3339} ${remote_ip} ${method} ${uri} ${status} ${latency_human}\n",
-
 	}))
+	router.Use(middleware.Recover())
 	router.Use(handler.ExcludeRouteHandler)
 	router.Use(AuthMiddleware)
 	router.Use(handler.RouteHandler)
 }
 
 func FormatTimeRFC3339(t time.Time) string {
-    return t.Format(time.RFC3339)
+	return t.Format(time.RFC3339)
 }

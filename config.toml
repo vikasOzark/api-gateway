@@ -1,6 +1,7 @@
 [endpoints]
 auth = "http://127.0.0.1:3000"
-user = "http://127.0.0.1"
+user = "http://127.0.0.1:3000"
+test = "http://127.0.0.1:3000/test"
 
 [exclude]
 auth = "/auth/v1/login, /auth/v1/registration"
