@@ -1,6 +1,7 @@
 package helpers
 
 import (
+	"fmt"
 	"log"
 	"log/syslog"
 
@@ -42,4 +43,8 @@ func Logger() *zap.Logger {
     logger := zap.New(NewSyslogCore(), zap.AddCaller())
     defer logger.Sync()
     return logger
+}
+
+func LoggerMess(message string, method string, status int) string {
+    return fmt.Sprintf("%s %s %d", message, method, status)
 }
