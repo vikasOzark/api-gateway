@@ -90,23 +90,25 @@ The application relies on the following environment variables:
 ### Project Structure
 
 ```plaintext
+.
 ├── cmd
 │   └── main
-│       └── main.go
+│       ├── main.go
+│       └── main_test.go
 ├── helpers
 │   ├── config-loader.go
 │   ├── file-checker.go
 │   ├── logger.go
+│   ├── path-utils.go
 │   ├── required-checks.go
 │   ├── response-provider.go
-│   ├── test
-│   │   └── configuration_loader_test.go
 │   └── url-extractor.go
 ├── internal
 │   ├── handler
 │   │   ├── exclude-routes.go
 │   │   ├── route-handler.go
 │   │   └── test
+│   │       ├── cuncurrent_request_test.go
 │   │       └── exclud_routes_test.go
 │   ├── middleware
 │   │   ├── middleware-auth.go
@@ -117,12 +119,14 @@ The application relies on the following environment variables:
 │       └── request-manager.go
 ├── isdelve
 │   └── nodelve.go
-├── README.md
 ├── test
 │   └── test_env_setter.go
 ├── third_party
 │   ├── goclockauth.go
 │   └── utils.go
-├── tmp
-└── vendor
+├── config.toml
+├── go.mod
+├── go.sum
+├── README.md
+├── request_load_test.go
 ```
