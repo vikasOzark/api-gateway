@@ -17,6 +17,7 @@ import (
 // 1. Adds the RouteHandler middleware to the router to process and route
 // incoming requests based on the HTTP method.
 func HandlerMiddleware(router *echo.Echo) {
+	router.Use(middleware.RateLimiterWithConfig(RateLimiterConfig()))
 	router.Use(middleware.RemoveTrailingSlash())
 	router.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
 		Format: "${time_rfc3339} ${remote_ip} ${method} ${uri} ${status} ${latency_human}\n",
