@@ -1,6 +1,7 @@
 package helpers
 
 import (
+	"gateway/helpers/constant"
 	"log"
 	"os"
 
@@ -18,7 +19,7 @@ type Config struct {
 
 func (cl *Config) LoadConfig() error {
 	
-	config_path := os.Getenv("CONFIG_PATH")
+	config_path := os.Getenv(constant.ENV_CONFIG_PATH)
 	if _, err := toml.DecodeFile(config_path, cl); err != nil {
 		log.Fatal(err)
 		return err

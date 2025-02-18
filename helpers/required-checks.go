@@ -2,6 +2,7 @@ package helpers
 
 import (
 	"fmt"
+	"gateway/helpers/constant"
 	"os"
 	"strings"
 )
@@ -16,7 +17,7 @@ func RequiredChecks() error {
         return fmt.Errorf("error loading .env file: %v", err)
     }
 
-    configPath := os.Getenv("CONFIG_PATH")
+    configPath := os.Getenv(constant.ENV_CONFIG_PATH)
 
     if configPath == "" {
         return fmt.Errorf("CONFIG_PATH environment variable not set")

@@ -2,6 +2,7 @@ package main
 
 import (
 	"gateway/helpers"
+	"gateway/helpers/constant"
 	"gateway/internal/middleware"
 	"log"
 	"net/http"
@@ -19,7 +20,7 @@ func main() {
 	logger := helpers.Logger()
 	logger.Info("Starting the API gateway service")
 
-	debugEnv := os.Getenv("DEBUG")
+	debugEnv := os.Getenv(constant.ENV_DEBUG)
 	debug, err := strconv.ParseBool(debugEnv)
 	if err != nil {
 		log.Printf("Invalid value for DEBUG: %s, defaulting to false", debugEnv)
@@ -39,6 +40,6 @@ func main() {
     <h1 style="color:#AEEA94;">Welcome to the API gateway service.</h1></body>`)
 	})
 
-	severPort := os.Getenv("PORT")
+	severPort := os.Getenv(constant.ENV_PORT)
 	router.Logger.Fatal(router.Start(":" + severPort))
 }
